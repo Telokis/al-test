@@ -1,0 +1,11 @@
+{
+  "name": "al-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "cp -v .hooks/* .git/hooks/"
+  },
+  "repository": "git@github.com:Telokis/al-test.git",
+  "author": "Telokis <telokis0@gmail.com>",
+  "license": "MIT"
+}

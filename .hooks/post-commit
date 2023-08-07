@@ -1,0 +1,12 @@
+#!env /bin/bash
+
+# This file will restore the config file to its original version
+
+# The file we want to restore
+FILE_TO_SECURE="./src/config.py"
+
+# The backup to restore
+FILE_BACKUP="./tmp/config.py"
+
+# Backup the file
+cp -v "$FILE_BACKUP" "$FILE_TO_SECURE"

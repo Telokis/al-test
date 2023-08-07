@@ -1,0 +1,24 @@
+#!env /bin/bash
+
+# This file will backup the config file and hide the sensitive values inside
+
+# The file we want to remove secrets from
+FILE_TO_SECURE="./src/config.py"
+
+# The file we want to remove secrets from
+FILE_BACKUP="./tmp/config.py"
+
+# Each key containing this word will be removed
+KEYWORD_TO_SECURE="secret"
+
+# Create the parent directory of backup if necessary
+[ -d $(dirname $FILE_BACKUP) ] || mkdir -p $(dirname $FILE_BACKUP)
+
+# Backup the file
+cp -v "$FILE_TO_SECURE" "$FILE_BACKUP"
+
+# We update the file in place
+sed -i "s/\(.*$KEYWORD_TO_SECURE.*\)=.*/\1=\"<omitted>\"/i" "$FILE_TO_SECURE"
+
+# We add the modified file to the current commit
+git add "$FILE_TO_SECURE"
